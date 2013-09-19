@@ -1,4 +1,4 @@
-package com.stb.cqrs;
+package com.stb.cqrs.handler;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

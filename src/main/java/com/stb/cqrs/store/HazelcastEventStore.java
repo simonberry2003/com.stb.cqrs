@@ -11,16 +11,16 @@ import com.stb.cqrs.AggregateEvent;
 
 public class HazelcastEventStore implements EventStore {
 
-	private final HazelcastInstance hazelcast; 
+	private final HazelcastInstance hazelcast;
 	private final AtomicLong eventId = new AtomicLong(1);
 	private final List<EventEntity> events;
-	
+
 	public HazelcastEventStore() {
 		Config cfg = new Config();
 		hazelcast = Hazelcast.newHazelcastInstance(cfg);
 		events = hazelcast.getList("events");
 	}
-	
+
 	@Override
 	public void persist(AggregateEvent event) {
 		EventEntity entity = new EventEntity(eventId.getAndIncrement(), event);
